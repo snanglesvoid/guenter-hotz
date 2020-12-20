@@ -1,0 +1,83 @@
+<dt>
+  article<a name="{{ entry.EntryKey }}">({{ entry.EntryKey }})</a>
+</dt>
+<p>{{ entry.EntryType }}</p>
+<dd>
+  <span class="authors" *ngIf="entry.Fields.Author"> {{ authors }}. </span>
+</dd>
+<dd>
+  <i>{{ entry.Fields.Title }}.</i>
+</dd>
+<dd>
+  <ng-container *ngIf="entry.EntryType === 'mastersthesis'">
+    <span>Master's Thesis, </span>
+    <span>{{ entry.Fields.School || entry.Fields.Institution }},</span>
+  </ng-container>
+
+  <ng-container *ngIf="entry.EntryType === 'article'">
+    <span>{{ entry.Fields.Journal }}&nbsp;</span>
+    <span>{{ entry.Fields.Volume }}</span>
+    <span *ngIf="entry.Fields.Number">({{ entry.Fields.Number }})</span>,
+    <span *ngIf="entry.Fields.Pages">{{ entry.Fields.Pages }}, </span>
+  </ng-container>
+
+  <ng-container *ngIf="entry.EntryType === 'techreport'">
+    <span>Technical Report&nbsp;</span>
+    <span>{{ entry.Fields.Institution }},</span>
+  </ng-container>
+
+  <ng-container
+    *ngIf="
+      entry.EntryType === 'inproceedings' || entry.EntryType === 'incollection'
+    "
+  >
+    <span>In </span>
+    <span class="editors" *ngIf="entry.Fields.Editor">
+      {{ editors }}.&nbsp;
+    </span>
+    <span>{{ entry.Fields.Booktitle }}.<br /></span>
+    <span *ngIf="entry.Fields.Series">{{ entry.Fields.Series }}.&nbsp;</span>
+    <span>{{ entry.Fields.Volume }}</span>
+    <span *ngIf="entry.Fields.Number">({{ entry.Fields.Number }}),</span>
+    <span *ngIf="entry.Fields.Pages"
+      >{{ entry.Fields.Pages }}
+      <span *ngIf="entry.Fields.Publisher">,</span>
+    </span>
+    <span *ngIf="entry.Fields.Publisher">{{ entry.Fields.Publisher }}</span>
+    <span>.</span>
+  </ng-container>
+
+  <ng-container
+    *ngIf="entry.EntryType === 'book' || entry.EntryType === 'proceedings'"
+  >
+    <span class="editors" *ngIf="entry.Fields.Editor">
+      Eds. <b> {{ editors }}.&nbsp; </b>
+    </span>
+    <span *ngIf="entry.Fields.Booktitle">
+      {{ entry.Fields.Booktitle }}.<br />
+    </span>
+    <span *ngIf="entry.Fields.Series">{{ entry.Fields.Series }}.&nbsp;</span>
+    <span>{{ entry.Fields.Volume }}</span>
+    <span *ngIf="entry.Fields.Number">({{ entry.Fields.Number }})</span>,
+    <span *ngIf="entry.Fields.Pages">{{ entry.Fields.Pages }}</span>
+    <span *ngIf="entry.Fields.Publisher">, {{ entry.Fields.Publisher }}</span>
+    <span>.</span>
+  </ng-container>
+
+  <ng-container *ngIf="entry.EntryType === 'misc'">
+    <span>{{ entry.Fields.Howpublished }}</span>
+  </ng-container>
+
+  <span> {{ entry.Fields.Year }}. </span>
+</dd>
+<dd>
+  <p>
+    <a href="../publications/paper/guan_hotz_2011_multilinearGrammars.pdf">
+      pdf
+    </a>
+    <a href="javascript:toggleInfo('GuanHotz:2011aa','bibtex')">BibTeX</a>
+  </p>
+</dd>
+
+<pre class="bibtex noshow"></pre>
+<br />
