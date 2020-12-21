@@ -61,7 +61,7 @@
     *ngIf="entry.EntryType === 'book' || entry.EntryType === 'proceedings'"
   >
     <span class="editors" *ngIf="entry.Fields.Editor">
-      Eds. <b> {{ editors }}.&nbsp; </b>
+      Eds. {{ editors }}.&nbsp;
     </span>
     <span *ngIf="entry.Fields.Booktitle">
       {{ entry.Fields.Booktitle }}.<br />

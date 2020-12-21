@@ -20,8 +20,9 @@ h1,
 h2,
 h3,
 ul,
-li {
-  color: #222;
+li,
+span {
+  color: #333;
 }
 
 h1 {
