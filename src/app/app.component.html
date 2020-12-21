@@ -1,10 +1,23 @@
-<div class="heading">
-  <h1>Günter Hotz</h1>
-  <h2>Publications</h2>
-  <h3>edited by Ingrid Hotz</h3>
-</div>
-<div class="bibtex-entries">
-  <ng-container *ngFor="let entry of bib$ | async">
-    <app-entry [entry]="entry"></app-entry>
-  </ng-container>
+<div id="main">
+  <div class="heading">
+    <h1>Günter Hotz</h1>
+    <h2>Publications</h2>
+    <h3>edited by Ingrid Hotz</h3>
+  </div>
+  <div class="grid">
+    <div class="nav">
+      <h2 class="decade-title" *ngFor="let decade of decades">
+        <a href="#{{ decade.start }}"> {{ decade.start }}++ </a>
+      </h2>
+    </div>
+    <div class="column-placeholder"></div>
+    <div class="bibtex-entries">
+      <div *ngFor="let decade of decades; let i = index" [id]="decade.start">
+        <h2 class="decade-title">{{ decadeTitle(decade) }}</h2>
+        <ng-container *ngFor="let entry of bibByDecade[i] | async">
+          <app-entry [entry]="entry"></app-entry>
+        </ng-container>
+      </div>
+    </div>
+  </div>
 </div>
