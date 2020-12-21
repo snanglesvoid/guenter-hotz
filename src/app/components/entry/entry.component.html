@@ -1,11 +1,10 @@
-<dt>
+<dt class="hidden">
   article<a name="{{ entry.EntryKey }}">({{ entry.EntryKey }})</a>
 </dt>
-<p>{{ entry.EntryType }}</p>
 <dd>
   <span class="authors" *ngIf="entry.Fields.Author"> {{ authors }}. </span>
 </dd>
-<dd>
+<dd class="title">
   <i>{{ entry.Fields.Title }}.</i>
 </dd>
 <dd>
@@ -15,10 +14,20 @@
   </ng-container>
 
   <ng-container *ngIf="entry.EntryType === 'article'">
-    <span>{{ entry.Fields.Journal }}&nbsp;</span>
-    <span>{{ entry.Fields.Volume }}</span>
-    <span *ngIf="entry.Fields.Number">({{ entry.Fields.Number }})</span>,
-    <span *ngIf="entry.Fields.Pages">{{ entry.Fields.Pages }}, </span>
+    <span class="journal">{{ entry.Fields.Journal }}</span>
+    <span class="volume" *ngIf="entry.Fields.Volume"
+      >&nbsp;{{ entry.Fields.Volume }}</span
+    >
+    <span class="number" *ngIf="entry.Fields.Number"
+      >({{ entry.Fields.Number }})</span
+    >
+    <span
+      *ngIf="entry.Fields.Journal || entry.Fields.Volume || entry.Fields.Number"
+      >,</span
+    >
+    <span class="pages" *ngIf="entry.Fields.Pages"
+      >{{ entry.Fields.Pages | sanitizePages }},
+    </span>
   </ng-container>
 
   <ng-container *ngIf="entry.EntryType === 'techreport'">
@@ -38,10 +47,11 @@
     <span>{{ entry.Fields.Booktitle }}.<br /></span>
     <span *ngIf="entry.Fields.Series">{{ entry.Fields.Series }}.&nbsp;</span>
     <span>{{ entry.Fields.Volume }}</span>
-    <span *ngIf="entry.Fields.Number">({{ entry.Fields.Number }}),</span>
+    <span *ngIf="entry.Fields.Number">({{ entry.Fields.Number }})</span>
+    <span *ngIf="entry.Fields.Volume || entry.Fields.Number">,&nbsp;</span>
     <span *ngIf="entry.Fields.Pages"
-      >{{ entry.Fields.Pages }}
-      <span *ngIf="entry.Fields.Publisher">,</span>
+      >{{ entry.Fields.Pages | sanitizePages
+      }}<span *ngIf="entry.Fields.Publisher">,&nbsp;</span>
     </span>
     <span *ngIf="entry.Fields.Publisher">{{ entry.Fields.Publisher }}</span>
     <span>.</span>
@@ -58,8 +68,11 @@
     </span>
     <span *ngIf="entry.Fields.Series">{{ entry.Fields.Series }}.&nbsp;</span>
     <span>{{ entry.Fields.Volume }}</span>
-    <span *ngIf="entry.Fields.Number">({{ entry.Fields.Number }})</span>,
-    <span *ngIf="entry.Fields.Pages">{{ entry.Fields.Pages }}</span>
+    <span *ngIf="entry.Fields.Number">({{ entry.Fields.Number }})</span>
+    <span *ngIf="entry.Fields.Series || entry.Fields.Number">,</span>
+    <span class="pages" *ngIf="entry.Fields.Pages">{{
+      entry.Fields.Pages | sanitizePages
+    }}</span>
     <span *ngIf="entry.Fields.Publisher">, {{ entry.Fields.Publisher }}</span>
     <span>.</span>
   </ng-container>
@@ -70,14 +83,28 @@
 
   <span> {{ entry.Fields.Year }}. </span>
 </dd>
-<dd>
+
+<dd class="links">
   <p>
-    <a href="../publications/paper/guan_hotz_2011_multilinearGrammars.pdf">
-      pdf
-    </a>
-    <a href="javascript:toggleInfo('GuanHotz:2011aa','bibtex')">BibTeX</a>
+    <ng-container *ngIf="entry.Fields.Abstract">
+      <a (click)="toggleAbstract()">abstract</a>
+    </ng-container>
+    <ng-container *ngIf="entry.Fields.Pdf">
+      <a [href]="pdfLink" target="_blank">pdf</a>
+    </ng-container>
+    <a (click)="toggleBibtex()">BibTeX</a>
   </p>
 </dd>
 
-<pre class="bibtex noshow"></pre>
+<dd>
+  <br />
+  <p class="abstract" [style.display]="abstractOpen ? 'block' : 'none'">
+    {{ entry.Fields.Abstract }}
+  </p>
+</dd>
+
+<pre class="bibtex" [style.display]="bibtexOpen ? 'block' : 'none'"
+  >{{ bibtexText }}
+</pre>
+
 <br />

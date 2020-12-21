@@ -1,7 +1,30 @@
-.authors {
-  font-weight: bold;
+/* .authors { */
+/* } */
+
+:host {
+  font-size: 1.3rem;
+}
+
+.title {
+  font-weight: 600;
 }
 
 .editors {
   opacity: 0.7;
+}
+
+pre {
+  word-wrap: break-word;
+}
+
+.links a::before {
+  content: "[";
+  /* padding-top: 0.5rem; */
+}
+.links a::after {
+  content: "]";
+}
+
+.pages::before {
+  content: "\00a0";
 }
