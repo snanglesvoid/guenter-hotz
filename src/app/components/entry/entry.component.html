@@ -73,7 +73,11 @@
     <span class="pages" *ngIf="entry.Fields.Pages">{{
       entry.Fields.Pages | sanitizePages
     }}</span>
-    <span *ngIf="entry.Fields.Publisher">, {{ entry.Fields.Publisher }}</span>
+    <span
+      *ngIf="entry.Fields.Series || entry.Fields.Number || entry.Fields.Pages"
+      >,&nbsp;</span
+    >
+    <span *ngIf="entry.Fields.Publisher">{{ entry.Fields.Publisher }}</span>
     <span>.</span>
   </ng-container>
 
