@@ -48,4 +48,8 @@ export class EntryComponent implements OnInit {
     return this.bibtex.getBibtex(this.entry.EntryKey)
   }
 
+  public get abstractHtml() {
+    return this.sanitizer.bypassSecurityTrustHtml(this.entry.Fields.Abstract)
+  }
+
 }

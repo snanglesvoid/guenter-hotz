@@ -11,7 +11,8 @@ li {
 }
 
 body {
-  font-family: Helvetica, Verdana, Arial, sans-serif;
+  /* font-family: Helvetica, Verdana, Arial, sans-serif; */
+  font-family: "Barlow", sans-serif;
   font-size: 10px;
 }
 
@@ -19,6 +20,32 @@ body {
   width: 800px;
   max-width: 800px;
   margin: auto;
+}
+
+@media screen and (max-width: 960px) {
+  #main {
+    width: 100vw;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin: 0;
+  }
+}
+
+.heading {
+  height: 120px;
+  background: white;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+}
+
+.heading h1 {
+  color: #737a80;
+}
+
+.nav {
+  position: fixed;
+  top: 170px;
 }
 
 p,

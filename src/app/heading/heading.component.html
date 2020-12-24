@@ -1,0 +1,20 @@
+<img src="/assets/images/rinde.jpg" alt="" class="background" />
+<div class="background-cover" [class.transparent]="transparent"></div>
+
+<div class="heading" [class.transparent]="transparent">
+  <h1>
+    Günter H<span class="condense-letters">o</span
+    ><span class="condense-letters">T</span>z
+  </h1>
+  <div class="navlinks">
+    <a routerLink="/" [class.active]="activeLink === 'home'">Home</a>
+    &nbsp;|&nbsp;
+    <a routerLink="/publications" [class.active]="activeLink === 'publications'"
+      >Publications</a
+    >
+    &nbsp;|&nbsp;
+    <a routerLink="/cv" [class.active]="activeLink === 'cv'">CV</a>
+  </div>
+</div>
+
+<div class="spacer" style="height: 220px;"></div>

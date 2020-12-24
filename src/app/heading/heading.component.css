@@ -1,0 +1,84 @@
+.condense-letters {
+  letter-spacing: -4px;
+  color: #737a80;
+}
+.heading {
+  height: 240px;
+}
+
+.heading h1 {
+  font-weight: 400;
+  font-size: 9.5rem;
+  white-space: nowrap;
+}
+@media screen and (max-width: 960px) {
+  .heading h1 {
+    font-size: 4rem;
+    text-align: center;
+  }
+  .heading {
+    height: 100px;
+  }
+  .text {
+    padding: 1rem;
+  }
+}
+
+.navlinks {
+  display: flex;
+  flex-direction: row;
+  font-size: 2rem;
+  color: #93b0bb;
+  justify-content: center;
+  width: 100%;
+
+  padding-bottom: 2rem;
+}
+
+.navlinks a {
+  text-decoration: none;
+  color: #93b0bb;
+}
+.navlinks a.active {
+  color: #737a80;
+}
+.navlinks a:hover {
+  color: #737a80;
+}
+.background {
+  position: fixed;
+  pointer-events: none;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  height: 100vh;
+  width: 100vw;
+  opacity: 0.5;
+}
+
+.background-cover {
+  margin-left: 100px;
+  margin-right: 100px;
+  position: fixed;
+  left: 50%;
+  margin: 0;
+  width: calc(90vw - 200px);
+  height: 100vh;
+  z-index: -1;
+  min-width: 1000px;
+  transform: translateX(-50%);
+  background: white;
+}
+
+.background-cover.transparent {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.heading {
+  background: white;
+}
+
+.heading.transparent {
+  background: transparent;
+}

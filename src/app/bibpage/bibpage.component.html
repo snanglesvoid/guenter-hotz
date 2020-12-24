@@ -1,0 +1,17 @@
+  <app-heading [transparent]="false" activeLink="publications"></app-heading>
+
+  <div class="grid">
+    <div class="nav">
+      <h2 class="decade-title" *ngFor="let decade of decades; let i=index;">
+        <a (click)="goToDecade(decade)"> {{ decade.start }}++ </a>
+      </h2>
+    </div>
+    <div class="bibtex-entries">
+      <div *ngFor="let decade of decades; let i = index" [id]="decade.start">
+        <h2 class="decade-title">{{ decadeTitle(decade) }}</h2>
+        <ng-container *ngFor="let entry of bibByDecade[i] | async">
+          <app-entry [entry]="entry"></app-entry>
+        </ng-container>
+      </div>
+    </div>
+  </div>

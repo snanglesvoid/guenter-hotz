@@ -17,6 +17,7 @@ pre {
   word-wrap: break-word;
   max-width: 100%;
   overflow: hidden;
+  font-size: 0.9rem;
 }
 
 .links a::before {

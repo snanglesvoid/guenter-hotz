@@ -98,12 +98,17 @@
 
 <dd>
   <br />
-  <p class="abstract" [style.display]="abstractOpen ? 'block' : 'none'">
-    {{ entry.Fields.Abstract }}
-  </p>
+  <p
+    class="abstract"
+    [style.display]="abstractOpen ? 'block' : 'none'"
+    [innerHTML]="abstractHtml"
+  ></p>
 </dd>
 
-<pre class="bibtex" [style.display]="bibtexOpen ? 'block' : 'none'"
+<pre
+  class="bibtex"
+  [style.display]="bibtexOpen ? 'block' : 'none'"
+  [innerHTML]="bibtexText"
   >{{ bibtexText }}
 </pre>
 
