@@ -1,11 +1,15 @@
-  <app-heading [transparent]="false" activeLink="publications"></app-heading>
+<app-heading [transparent]="false" activeLink="publications"></app-heading>
 
-  <div class="grid">
+<div class="grid">
+  <div class="left">
     <div class="nav">
-      <h2 class="decade-title" *ngFor="let decade of decades; let i=index;">
+      <h2 class="decade-title" *ngFor="let decade of decades; let i = index">
         <a (click)="goToDecade(decade)"> {{ decade.start }}++ </a>
       </h2>
     </div>
+  </div>
+
+  <div class="right">
     <div class="bibtex-entries">
       <div *ngFor="let decade of decades; let i = index" [id]="decade.start">
         <h2 class="decade-title">{{ decadeTitle(decade) }}</h2>
@@ -15,3 +19,4 @@
       </div>
     </div>
   </div>
+</div>

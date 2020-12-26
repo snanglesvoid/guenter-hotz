@@ -3,8 +3,18 @@
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: 200px 600px;
+  /* display: grid; */
+  /* grid-template-columns: 200px 600px; */
+  display: block;
+}
+
+.grid .left {
+  float: left;
+  width: 200px;
+}
+.grid .right {
+  float: right;
+  width: 600px;
 }
 
 h2.decade-title {
