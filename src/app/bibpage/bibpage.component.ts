@@ -7,7 +7,7 @@ import {Observable} from 'rxjs'
 import {map, share, tap} from 'rxjs/operators'
 
 import {BibtexParser} from 'src/app/lib/Parser'
-import {BibtexEntry, compareEntries, trimFields} from '../lib/BibtexEntry'
+import {BibtexEntry, compareEntries, parse, trimFields} from '../lib/BibtexEntry'
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,7 @@ export class BibpageComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.bib$ = this.http.get('assets/guenter_hotz-copy.bib', {responseType: 'text'}).pipe(
+    this.bib$ = this.http.get('assets/hotz-forWeb.bib', {responseType: 'text'}).pipe(
       map(x =>
         x
           .replace(/\\\"u/g, '{\\\"{u}}')
@@ -35,6 +35,13 @@ export class BibpageComponent implements OnInit {
       map(x => x.entries),
       map(x => x.sort(compareEntries)),
       map(x => x.map((y: BibtexEntry) => trimFields(y))),
+      map(x => {
+        x.forEach((y: any) => {
+          y.Fields = parse(y.Fields)
+        })
+        return x
+      }),
+      tap(console.log),
       share(),
     )
 

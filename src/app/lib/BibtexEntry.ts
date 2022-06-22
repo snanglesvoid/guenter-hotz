@@ -53,6 +53,31 @@ export interface Author {
   lastname: string
 }
 
+export const parse: (o: any) => BibtexFields =
+  o => ({
+    Author: o.Author || o.author,
+    Year: o.Year || o.year,
+    Title: o.Title || o.title,
+    Abstract: o.Abstract || o.abstract,
+    Editor: o.Editor || o.editor,
+    Booktitle: o.Booktitle || o.booktitle,
+    Doi: o.Doi || o.doi,
+    Keywords: o.Keywords || o.keywords,
+    Month: o.Month || o.month,
+    Journal: o.Journal || o.journal,
+    Pages: o.Pages || o.pages,
+    Pagenumber: o.Pagenumber || o.pagenumber,
+    Pdf: o.Pdf || o.pdf,
+    Isbn: o.Isbn || o.isbn,
+    Publisher: o.Publisher || o.publisher,
+    Series: o.Series || o.series,
+    Institution: o.Institution || o.institution,
+    School: o.School || o.school,
+    Volume: o.Volume || o.volume,
+    Number: o.Number || o.number,
+    Howpublished: o.Howpublished || o.howpublished,
+  })
+
 export const parseAuthors: (authorString: string) => Author[] =
   authorString => authorString ? authorString
     .split('and')
@@ -61,7 +86,7 @@ export const parseAuthors: (authorString: string) => Author[] =
     : []
 
 export const capitalize: (str: string) => string =
-  str => str.charAt(0).toUpperCase() + str.slice(1)
+  str => str ? str.charAt(0).toUpperCase() + str.slice(1) : ''
 
 export const abbreviateName: (name: string) => Author =
   name => {
