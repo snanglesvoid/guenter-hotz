@@ -21,7 +21,7 @@ export class BibpageComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.bib$ = this.http.get('assets/hotz-forWeb.bib', {responseType: 'text'}).pipe(
+    this.bib$ = this.http.get('assets/102021.bib', {responseType: 'text'}).pipe(
       map(x =>
         x
           .replace(/\\\"u/g, '{\\\"{u}}')
