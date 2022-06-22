@@ -119,8 +119,7 @@
 
 <br />
 
-
-<dd class="links">
-  <a>Pdf: {{entry.Fields.Pdf}}</a>
+<dd class="links" *ngIf="entry.Fields.Pdf">
+  <a>Pdf: {{ entry.Fields.Pdf }}</a>
 </dd>
-<br/>
+<br />
