@@ -1,0 +1,10 @@
+<div class="main">
+  <div class="bibtex-entries">
+    <div *ngFor="let decade of decades; let i = index" [id]="decade.start">
+      <h2 class="decade-title">{{ decadeTitle(decade) }}</h2>
+      <ng-container *ngFor="let entry of bibByDecade[i] | async">
+        <app-entry-print [entry]="entry"></app-entry-print>
+      </ng-container>
+    </div>
+  </div>
+</div>

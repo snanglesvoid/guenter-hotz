@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router'
 import {BibpageComponent} from './bibpage/bibpage.component'
 import {CvComponent} from './cv/cv.component'
 import {HomepageComponent} from './homepage/homepage.component'
+import {BibPrintComponent} from './bib-print/bib-print.component'
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'cv',
     component: CvComponent,
+  },
+  {
+    path: 'bib-print',
+    component: BibPrintComponent,
   },
 ]
 

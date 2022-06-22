@@ -1,0 +1,64 @@
+:host {
+  display: block;
+}
+
+.main {
+  width: 100%;
+  padding: 24px;
+}
+
+.grid {
+  /* display: grid; */
+  /* grid-template-columns: 200px 600px; */
+  display: block;
+}
+
+.grid .left {
+  float: left;
+  width: 200px;
+}
+.grid .right {
+  float: right;
+  width: 600px;
+}
+
+h2.decade-title {
+  font-weight: 100;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+h2.decade-title a {
+  color: #93b0bb;
+  text-decoration: none;
+  border-left: 5px solid white;
+  padding-left: 5px;
+  transition: all 0.3s ease;
+}
+
+h2.decade-title:hover a {
+  border-left: 5px solid #737a80;
+  color: #737a80;
+}
+
+.nav {
+  position: fixed;
+  top: 236px;
+}
+
+.bibtex-entries {
+  padding-top: 16px;
+  grid-column: 2;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
