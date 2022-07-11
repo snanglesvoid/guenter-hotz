@@ -117,9 +117,9 @@ export const parseKeywords: (keywordsString: string) => string[] =
 
 export const trimFields: (entry: BibtexEntry) => BibtexEntry =
   entry => {
-    const keys = Object.keys(entry.Fields)
-    for (const key of keys) {
-      entry.Fields[key] = entry.Fields[key].trim()
-    }
+    // const keys = Object.keys(entry.Fields)
+    // for (const key of keys) {
+    //   entry.Fields[key] = entry.Fields[key].trim()
+    // }
     return entry
   }

@@ -34,7 +34,7 @@ export class BibpageComponent implements OnInit {
       map(x => BibtexParser(x)),
       map(x => x.entries),
       map(x => x.sort(compareEntries)),
-      map(x => x.map((y: BibtexEntry) => trimFields(y))),
+      // map(x => x.map((y: BibtexEntry) => trimFields(y))),
       map(x => {
         x.forEach((y: any) => {
           y.Fields = parse(y.Fields)
@@ -47,6 +47,8 @@ export class BibpageComponent implements OnInit {
 
     this.bibByDecade = this.decades
       .map(decade => this.getBibByDecade(decade))
+
+    this.bib$.subscribe(x => ((window as any).bib = x))
   }
 
   public decades = [1950, 1960, 1970, 1980, 1990, 2000, 2010]
